@@ -1,11 +1,11 @@
 <template>
-  <button @click="handleClick" class="calculator-button">
+  <button @click="handleClick" :class="['calculator-button', { 'trig-button': isTrigFunction, 'clear-button': isClearButton }]">
     {{ label }}
   </button>
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits, computed } from 'vue';
 
 const props = defineProps({
   label: {
@@ -19,6 +19,9 @@ const emits = defineEmits(['press']);
 const handleClick = () => {
   emits('press', props.label);
 };
+
+const isTrigFunction = computed(() => ['sin', 'cos', 'tan'].includes(props.label));
+const isClearButton = computed(() => props.label === 'C');
 </script>
 
 <style scoped>
@@ -31,5 +34,13 @@ const handleClick = () => {
   padding: 1em;
   width: 3em;
   height: 3em;
+}
+
+.trig-button {
+  background: #008080;
+}
+
+.clear-button {
+  background: #f00;
 }
 </style>
