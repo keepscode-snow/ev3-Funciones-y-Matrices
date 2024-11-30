@@ -1,5 +1,6 @@
 <template>
-  <button @click="handleClick" :class="['calculator-button', { 'trig-button': isTrigFunction, 'clear-button': isClearButton }]">
+  <button @click="handleClick"
+    :class="['calculator-button', { 'trig-button': isTrigFunction, 'clear-button': isClearButton }]">
     {{ label }}
   </button>
 </template>

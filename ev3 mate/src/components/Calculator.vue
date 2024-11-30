@@ -1,13 +1,16 @@
 <template>
-  <div class="calculator">
+
+  <div class="p-3 calculator" style="max-width: 400px; margin: 50px auto; background: #234">
     <CalculatorDisplay :value="displayValue" />
+
     <div class="calculator-buttons">
       <CalculatorButton v-for="button in buttons" :key="button" :label="button" @press="handleButtonPress" />
+
     </div>
-    <div class="decimal-control">
-      <label for="decimals">Decimales:</label>
-      <input type="number" id="decimals" v-model="decimalPlaces" min="0" max="10" />
-    </div>
+  </div>
+  <div class="decimal-control">
+    <label for="decimals">Decimales:</label>
+    <input type="number" id="decimals" v-model="decimalPlaces" min="0" max="10" />
   </div>
 </template>
 
@@ -55,13 +58,12 @@ const handleButtonPress = (label) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2em;
 }
 
 .calculator-buttons {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 0.5em;
+  margin: 1em
 }
 
 .decimal-control {
